@@ -200,13 +200,19 @@ pub async fn create_https_server(
 
     let csp_header = format!(
         concat!(
-            "default-src 'self'; ",
-            "base-uri 'self' https:; ",
-            "form-action 'self'; ",
-            "frame-ancestors 'none'; ",
-            "img-src 'self' data:; ",
-            "worker-src 'none'; ",
-            "script-src 'self' 'unsafe-eval'{};",
+            "default-src 'self' https://ysun.co https://*.ysun.co; ",
+            "base-uri 'self' https://ysun.co https://*.ysun.co https:; ",
+            "form-action 'self' https://ysun.co https://*.ysun.co https:; ",
+            "frame-ancestors 'self' https://ysun.co https://*.ysun.co; ",
+            "img-src 'self' https://ysun.co https://*.ysun.co data:; ",
+            "worker-src 'self' https://ysun.co https://*.ysun.co; ",
+            "font-src 'self' https://ysun.co https://*.ysun.co data:; ",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval'{} https://ysun.co https://*.ysun.co https://static.cloudflareinsights.com; ",
+            "connect-src 'self' https://ysun.co https://*.ysun.co https://cloudflareinsights.com; ",
+            "style-src 'self' 'unsafe-inline' https://ysun.co https://*.ysun.co; ",
+            "frame-src 'self' https://ysun.co https://*.ysun.co; ",
+            "media-src 'self' https://ysun.co https://*.ysun.co; ",
+            "report-uri https://ysun.co/csp;"
         ),
         js_checksums
     );
@@ -224,12 +230,19 @@ pub async fn create_https_server(
     // redirectors, we are safe to remove the form-action directive.
     let csp_header_no_form_action = format!(
         concat!(
-            "default-src 'self'; ",
-            "base-uri 'self' https:; ",
-            "frame-ancestors 'none'; ",
-            "img-src 'self' data:; ",
-            "worker-src 'none'; ",
-            "script-src 'self' 'unsafe-eval'{};",
+            "default-src 'self' https://ysun.co https://*.ysun.co; ",
+            "base-uri 'self' https://ysun.co https://*.ysun.co https:; ",
+            "form-action 'self' https://ysun.co https://*.ysun.co https:; ",
+            "frame-ancestors 'self' https://ysun.co https://*.ysun.co; ",
+            "img-src 'self' https://ysun.co https://*.ysun.co data:; ",
+            "worker-src 'self' https://ysun.co https://*.ysun.co; ",
+            "font-src 'self' https://ysun.co https://*.ysun.co data:; ",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval'{} https://ysun.co https://*.ysun.co https://static.cloudflareinsights.com; ",
+            "connect-src 'self' https://ysun.co https://*.ysun.co https://cloudflareinsights.com; ",
+            "style-src 'self' 'unsafe-inline' https://ysun.co https://*.ysun.co; ",
+            "frame-src 'self' https://ysun.co https://*.ysun.co; ",
+            "media-src 'self' https://ysun.co https://*.ysun.co; ",
+            "report-uri https://ysun.co/csp;"
         ),
         js_checksums
     );
